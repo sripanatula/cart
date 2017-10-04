@@ -116,4 +116,13 @@ public class CartService {
 		}
 		return rangeAndType;
 	}
+	/*
+	 * USE CASE 5
+	 * This method will return the number of bookins in the store 
+	 */
+	public int getCountOfBookingsByCardtype(String cardType){
+		int totalCount =0;
+		totalCount = cartRepo.getTotalBookingCountByCardtype(cardType);
+		return totalCount;
+	}
 }

@@ -83,12 +83,10 @@ public class Cart {
 	
     
     public FeeRangeWithCardType getFeeRangeAndCardType(){
-    	float minimumCCFees = -1;
-    	float maximumCCFees = -1;
-    	String minFeeCardType = null;
-    	String maxFeeCardType = null;
+    	long minimumCCFees = -1;
+    	long maximumCCFees = -1;
     	
-    	float currentFees;
+    	long currentFees;
     	for(FlightSegment flight:segments){
     		if(flight == null){
     			break;
@@ -97,11 +95,9 @@ public class Cart {
     		
     		if( currentFees < minimumCCFees  || minimumCCFees == -1 ){
     			minimumCCFees = flight.getCreditCardFees();
-    			minFeeCardType = flight.getCreditCardType();
     		}
     		if (currentFees > maximumCCFees || maximumCCFees == -1){
     			maximumCCFees = flight.getCreditCardFees();
-    			maxFeeCardType = flight.getCreditCardType();
     		}
     	}
     	
@@ -111,8 +107,7 @@ public class Cart {
     	}else{
     		feeRange.setMaxFees(maximumCCFees);
     		feeRange.setMinFees(minimumCCFees);
-    		feeRange.setMinFeeCardType(minFeeCardType);
-    		feeRange.setMaxFeeCardType(maxFeeCardType);
+    		feeRange.setCardType(getCardType());
     	}
     
     	return feeRange;

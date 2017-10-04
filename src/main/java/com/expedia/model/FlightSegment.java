@@ -1,13 +1,10 @@
 package com.expedia.model;
 
-import java.util.Date;
-
 public class FlightSegment {
 
 	private long segmentId;
 	private String flightDetails;
-	private String creditCardType;
-	private float creditCardFees;
+	private long creditCardFees;
 	
 	
 	public long getFlightId() {
@@ -22,16 +19,11 @@ public class FlightSegment {
 	public void setFlightDetails(String flightDetails) {
 		this.flightDetails = flightDetails;
 	}
-	public String getCreditCardType() {
-		return creditCardType;
-	}
-	public void setCreditCardType(String creditCardType) {
-		this.creditCardType = creditCardType;
-	}
-	public float getCreditCardFees() {
+	
+	public long getCreditCardFees() {
 		return creditCardFees;
 	}
-	public void setCreditCardFees(float creditCardFees) {
+	public void setCreditCardFees(long creditCardFees) {
 		this.creditCardFees = creditCardFees;
 	}
 

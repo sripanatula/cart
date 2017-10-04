@@ -14,6 +14,11 @@ public class CartRepository {
 	Map<Long, List> creditCardUsedIndex = new HashMap<Long, List>();
 	Logger _logger = new Logger();
 
+	/*
+	 * This method will add a given cart to the existing Structure
+	 * TODO: Here I need to make it scalable by having multiple clustered index and other mechanisms
+	 * for now storing ina  quick retrieval way of Hashmap
+	 */
 	public Cart saveBookedCart(Cart newCart) {
 
 		Cart addedCart;
@@ -42,7 +47,10 @@ public class CartRepository {
 
 	/*
 	 * A method to retrieve cart by the ID as shown in the API reference. 
+	 *
 	 * Except I chose to return the cart as it has more information than flight segments including Credit card and type etc.,
+	 * 
+	 * @param successId This is the successful BookingId or the critical ID we are using to identify carts
 	 */
 	public Cart getBookedCart(long successId) {
 
@@ -52,6 +60,13 @@ public class CartRepository {
 		return fromStorage;
 	}
 
+	/*
+	 * A method to count the number of Bookings by a certain card type
+	 * This needs to change when I improve it with scaling
+	 * 
+	 * @Param cardType  used to tell which cardtype like VISA, MASTERCARD ETC.,
+	 * In the future it needs to be coming from enum or storage
+	 */
 	public int getTotalBookingCountByCardtype(String cardType) {
 		int totalCount = 0;
 		for (Cart cart : cartStore.values()) {
